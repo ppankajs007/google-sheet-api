@@ -25,7 +25,7 @@ class GoogleService {
         //$this->credentialsFile = __DIR__ . "/credentials.json";
         $this->credentialsFile = __DIR__ . "/serviceAccount.json"; // this file download from Service Accounts
         $this->spreadsheetId = 'sheetId'; // google sheet id
-        $this->redirectUri = 'https://' . $_SERVER['HTTP_HOST'] . '/justdial/oauth2callback.php';
+        $this->redirectUri = 'https://' . $_SERVER['HTTP_HOST'] . '/abc/oauth2callback.php';
         $this->googleClient();
         
     }
@@ -37,7 +37,7 @@ class GoogleService {
                 $this->client->setAuthConfig($this->credentialsFile);
                 $this->client->addScope(Google_Service_Sheets::SPREADSHEETS);
                 $this->client->setAccessType('offline');
-                $this->client->setSubject('hiimsjustdial@focus-storm-429307-s4.iam.gserviceaccount.com'); // create by serve account mail
+                $this->client->setSubject('abc@focus-storm-44444-s4.iam.gserviceaccount.com'); // create by serve account mail
             }
         }catch (Exception $e) {
             return $e->getMessage();
