@@ -1,0 +1,42 @@
+function onEdit(e) {
+  Logger.log(e);
+  if (!e) {
+    Logger.log('Event object is missing.');
+    Logger.log(e);
+    return;
+  }
+
+  var sheet = e.source.getActiveSheet();
+  var range = e.range;
+  var column = range.getColumn();
+
+  var row = range.getRow();
+  var value = range.getValue();
+  
+  Logger.log('Row: ' + row);
+  Logger.log('Value: ' + value);
+  
+  var url = 'https://domain/folder/api/callingRemark.php';
+  var payload = {
+    'row': row,
+    'value': value
+  };
+  
+  var options = {
+    'method': 'post',
+    'contentType': 'application/json',
+    'payload': JSON.stringify(payload)
+  };
+  
+  try {
+    var response = UrlFetchApp.fetch(url, options);
+    Logger.log('Response: ' + response.getContentText());
+  } catch (e) {
+    Logger.log('Error: ' + e.message);
+  }
+}
+
+# go to add script menu in google sheet 
+# Create a function 
+# Add function on filter
+# If test this function provide testing mail to OAuth2 
